@@ -521,6 +521,18 @@ npm run preview    # Preview production build
 5. Open a Pull Request
 
 ---
+## Screenshots
+
+### Employee DashBoard
+![Employee Dashboard](screenshots/EmployeeDash.png)
+
+### Employer Dashboard
+![Employer Dashboard](screenshots/EmployerDash.png)
+
+### Leave Request Form
+![Leave Request](screenshots/leaveReq.png)
+
+---
 
 ## 👨‍💻 Author
 
