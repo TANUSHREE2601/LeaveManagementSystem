@@ -264,8 +264,7 @@ The frontend will run on `http://localhost:3000`
 ## 🌐 API Endpoints
 
 ### Base URL
-- **Development**: `http://localhost:5000/api`
-- **Production**: `https://api.yourdomain.com/api`
+- **Local Development**: `http://localhost:5000/api`
 
 ### Authentication Endpoints
 
@@ -314,9 +313,6 @@ curl -X POST http://localhost:5000/api/leaves/apply \
     "endDate":"2024-02-17",
     "reason":"Medical appointment"
   }'
-```
-
-For complete API documentation, see [API_ENDPOINTS.md](./API_ENDPOINTS.md)
 
 ---
 
@@ -371,50 +367,15 @@ VITE_API_URL=http://localhost:5000/api
 ---
 
 ## 🐳 Docker Usage
+> Docker configuration is provided for local testing and future deployment.
+> The project is currently run locally without production deployment.
 
-### Backend with Docker
+### Backend (Docker)
 
-#### Build Docker Image
-
+Build Docker image:
 ```bash
 cd backend
-docker build -t lms-backend:latest .
-```
-
-#### Run Docker Container
-
-```bash
-# Using Docker run
-docker run -d \
-  --name lms-backend \
-  -p 5000:5000 \
-  --env-file .env \
-  lms-backend:latest
-
-# Or using Docker Compose
-docker-compose up -d
-```
-
-#### Docker Commands
-
-```bash
-# View logs
-docker logs -f lms-backend
-
-# Stop container
-docker stop lms-backend
-
-# Remove container
-docker rm lms-backend
-
-# Restart container
-docker restart lms-backend
-
-# Using Docker Compose
-docker-compose logs -f    # View logs
-docker-compose down       # Stop and remove
-docker-compose restart    # Restart services
-```
+docker build -t lms-backend .
 
 ### Health Check
 
@@ -425,79 +386,20 @@ docker ps
 # Test API health endpoint
 curl http://localhost:5000/api/health
 ```
-
 ---
 
-## ☁️ AWS Deployment
+## ☁️ Deployment Status
 
-### Overview
+This project is **not deployed yet**.
 
-This application is designed to be deployed on AWS Free Tier:
+However, the application is **designed to be deployment-ready** and follows best practices suitable for cloud hosting.
 
-- **Backend**: AWS EC2 (t2.micro) with Docker
-- **Frontend**: AWS S3 + CloudFront
-- **Database**: MongoDB Atlas (M0 free cluster)
+### Planned Deployment Architecture
+- Backend: AWS EC2 (Docker-based)
+- Frontend: AWS S3 + CloudFront
+- Database: MongoDB Atlas
 
-### Quick Deployment Steps
-
-#### Backend Deployment (EC2)
-
-1. **Launch EC2 Instance**
-   - AMI: Amazon Linux 2023
-   - Instance Type: t2.micro (Free Tier)
-   - Security Group: Allow ports 22, 80, 443, 5000
-
-2. **Connect to EC2**
-   ```bash
-   ssh -i your-key.pem ec2-user@your-ec2-ip
-   ```
-
-3. **Install Docker**
-   ```bash
-   sudo yum update -y
-   sudo yum install docker -y
-   sudo systemctl start docker
-   sudo usermod -aG docker ec2-user
-   ```
-
-4. **Deploy Application**
-   ```bash
-   # Transfer files to EC2 (use SCP or Git)
-   cd /home/ec2-user/lms-backend/backend
-   
-   # Create .env file with production values
-   nano .env
-   
-   # Build and run container
-   docker-compose up -d --build
-   ```
-
-#### Frontend Deployment (S3)
-
-1. **Build Frontend**
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-2. **Create S3 Bucket**
-   - Bucket name: `lms-frontend`
-   - Enable static website hosting
-   - Set bucket policy for public access
-
-3. **Upload Files**
-   ```bash
-   aws s3 sync dist/ s3://lms-frontend --delete
-   ```
-
-4. **Set Up CloudFront** (Optional but Recommended)
-   - Create distribution pointing to S3 bucket
-   - Configure error pages (403/404 → index.html)
-   - Set up custom domain and SSL
-
-### Detailed Deployment Guide
-
-For step-by-step deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
+> Deployment will be done in future as part of learning and optimization.
 
 ---
 
@@ -532,9 +434,6 @@ For step-by-step deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
   createdAt: Date,
   updatedAt: Date
 }
-```
-
-For detailed schema documentation, see [DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)
 
 ---
 
@@ -586,19 +485,6 @@ npm test
 
 ---
 
-## 📚 Documentation
-
-Comprehensive documentation is available:
-
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System design and architecture
-- **[API_ENDPOINTS.md](./API_ENDPOINTS.md)** - Complete API reference
-- **[DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)** - Database structure
-- **[AUTHENTICATION_FLOW.md](./AUTHENTICATION_FLOW.md)** - Auth implementation
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment guide
-- **[ERROR_HANDLING.md](./ERROR_HANDLING.md)** - Error handling documentation
-
----
-
 ## 🛠️ Development
 
 ### Project Scripts
@@ -636,24 +522,17 @@ npm run preview    # Preview production build
 
 ---
 
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+**Tanushree Malviya**
+- GitHub: [@TANUSHREE2601](https://github.com/TANUSHREE2601)
+- LinkedIn: https://www.linkedin.com/in/tanushreemalviya2601/
 
 ---
 
 ## 🙏 Acknowledgments
 
 - MongoDB Atlas for free tier database hosting
-- AWS for free tier cloud services
 - React and Node.js communities for excellent documentation
 
 ---
