@@ -2,7 +2,6 @@
 
 <div align="center">
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)
 ![React](https://img.shields.io/badge/React-18+-61dafb.svg)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)
@@ -328,7 +327,7 @@ PORT=5000
 NODE_ENV=development
 
 # MongoDB Atlas Connection
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/lms?retryWrites=true&w=majority
+MONGODB_URI=your_mongodb_connection_string
 
 # JWT Configuration
 JWT_SECRET=your_super_secret_jwt_key_min_32_characters_long
